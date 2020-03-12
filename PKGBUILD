@@ -9,28 +9,27 @@ url="http://wiki.ros.org/franka_gripper"
 license=('Apache 2.0')
 
 makedepends=(
-'ros-melodic-libfranka'
+'cmake'
 )
 
 depends=(
+'ros-melodic-roscpp'
+'ros-melodic-message-generation'
 'ros-melodic-libfranka'
+'ros-melodic-control-msgs'
+'ros-melodic-actionlib'
+'ros-melodic-sensor-msgs'
+'ros-melodic-xmlrpcpp'
+'ros-melodic-actionlib-msgs'
 'ros-melodic-message-runtime'
+'ros-melodic-rostest'
 )
 
 provides=($pkgname)
 conflicts=($pkgname)
 _dir="franka_ros-release-release-melodic-franka_gripper-0.6.0-1"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/frankaemika/franka_ros-release/archive/release/melodic/franka_gripper/0.6.0-1.tar.gz"
-        "fix_pthread.patch")
-md5sums=('660503aebe9b435a7c6bca89c08892ad'
-         '47bf7851bddbd5fb4e696cd124432fdb')
-
-
-prepare() {
-    cd "${srcdir}/${_dir}"
-    patch --forward --strip=1 --input="${srcdir}/fix_pthread.patch"
-}
-
+source=("$pkgname-$pkgver.tar.gz::https://github.com/frankaemika/franka_ros-release/archive/release/melodic/franka_gripper/0.6.0-1.tar.gz")
+md5sums=('660503aebe9b435a7c6bca89c08892ad')
 
 build() {
 	# Use ROS environment variables
