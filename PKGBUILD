@@ -1,18 +1,22 @@
-
-# Maintainer: 
 pkgname="ros-melodic-franka-gripper"
 pkgver="0.6.0"
 pkgrel=1
 pkgdesc="This package implements the franka gripper of type Franka Hand for the use in ros"
-arch=('x86_64')
+arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 url="http://wiki.ros.org/franka_gripper"
 license=('Apache 2.0')
 
-makedepends=(
-'cmake'
+ros_makedepends=(
+'ros-melodic-catkin'
 )
 
-depends=(
+makedepends=(
+'cmake'
+'ros-build-tools'
+${ros_makedepends[@]}
+)
+
+ros_depends=(
 'ros-melodic-roscpp'
 'ros-melodic-message-generation'
 'ros-melodic-libfranka'
@@ -25,11 +29,16 @@ depends=(
 'ros-melodic-rostest'
 )
 
+depends=(
+${ros_depends[@]}
+)
+
 provides=($pkgname)
 conflicts=($pkgname)
-_dir="franka_ros-release-release-melodic-franka_gripper-0.6.0-1"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/frankaemika/franka_ros-release/archive/release/melodic/franka_gripper/0.6.0-1.tar.gz")
-md5sums=('660503aebe9b435a7c6bca89c08892ad')
+
+_dir="franka_ros-$pkgver/franka_gripper"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/frankaemika/franka_ros/archive/$pkgver.tar.gz")
+sha256sums=(6bfc7f743569e7491d44b82e1b9c39ace55881b7f42e4952e202e13d1e70a6b9)
 
 build() {
 	# Use ROS environment variables
