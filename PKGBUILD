@@ -1,6 +1,6 @@
 pkgname="ros-melodic-franka-gripper"
 pkgver="0.6.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="This package implements the franka gripper of type Franka Hand for the use in ros"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 url="http://wiki.ros.org/franka_gripper"
